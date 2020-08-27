@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import PopeBackground from '../../assets/pope.png';
+import desPopeImage from '../../assets/pope.png';
+import mobPopeImage from '../../assets/pope-mobile.jpg';
 import './Header.scss';
 
 const Header = () => {
   const [expandedLinks, setExpandedLinks] = useState(false);
+  const imageUrl = window.innerWidth >= 650 ? desPopeImage : mobPopeImage;
 
   const toggleLinks = () => () => {
     setExpandedLinks(!expandedLinks);
@@ -27,13 +29,14 @@ const Header = () => {
           </div>
           <div className={expandedLinks ? '' : 'hidden'}>
             <li className="navbar-link" onClick={() => setExpandedLinks(false)}>
-              <NavLink to="/"><span>Past Trials</span></NavLink>
+              <NavLink to="/past-trials"><span>Past Trials</span></NavLink>
             </li>
             <li className="navbar-link" onClick={() => setExpandedLinks(false)}>
-              <NavLink to="/"><span>How it Works</span></NavLink>
+              <NavLink to="/how-it-works"><span>How it Works</span></NavLink>
             </li>
             <li className="navbar-link" onClick={() => setExpandedLinks(false)}>
-              <NavLink to="/"><span>Log In / Sign Up</span></NavLink>
+              <NavLink to="/login"><span>Log In /</span></NavLink>
+              <NavLink to="/sign-up"><span>Sign Up</span></NavLink>
             </li>
             <li className="navbar-link" onClick={() => setExpandedLinks(false)}>
               <i className="fa fa-search" aria-hidden="true" />
@@ -41,7 +44,7 @@ const Header = () => {
           </div>
         </ul>
       </nav>
-      <img className="main-background" src={PopeBackground} alt="pope" />
+      <img className="main-background" src={imageUrl} alt="pope" />
       <div className="dayscounterbar">
         <div>
           <span>CLOSING IN</span>
@@ -51,7 +54,6 @@ const Header = () => {
         </div>
       </div>
     </div>
-
   );
 };
 

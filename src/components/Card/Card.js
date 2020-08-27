@@ -5,12 +5,15 @@ import Hand from '../../assets/hand.png';
 const Card = props => (
   <div
     className="card-component"
-    style={{ backgroundImage: `linear-gradient(to top, #000000, transparent), url('${props.personPhoto}')`}}>
+    style={{ backgroundImage: `linear-gradient(to top, #000000, transparent), url('${props.personPhoto}')`, backgroundRepeat: "no-repeat"}}>
     <div className="resume-like" >
-      <img className="icon icon-like" src={Hand} alt="like" />
+      <img className={props.personMostVote} src={Hand} alt="like" />
     </div>
+
     <h3>{props.personName}</h3>
+
     <h4 className="station-component">{props.personStation}</h4>
+
     <h4 className="description-component">{props.personDescription}</h4>
 
     <div className="votescontainer">

@@ -5,7 +5,7 @@ $colorDislike: #feb432;
   margin-bottom: 20px;
   margin-right: 20px;
   width: 45%;
-  height: 85vh;
+  height: 65vh;
   border: 1px solid #ffffff;
   box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3);
   border-radius: 2px;
@@ -28,9 +28,15 @@ $colorDislike: #feb432;
   .resume-like {
     grid-column-start: 1;
     grid-row-start: row1-end;
-    justify-self: center;
+    justify-self: start;
+    align-self: center;
     .icon {
-      width: 3vh;
+      width: 1.5vh;
+      padding: 1vh;
+      background-color: $colorLike;
+      &.icon-dislike {
+        background-color: $colorDislike;
+      }
     }
   }
   h3 {
@@ -139,5 +145,20 @@ $colorDislike: #feb432;
 @media only screen and (min-width: 767px) and (max-width: 1500px) {
   .card-component {
     margin: 10px 0;
+    height: 85vh;
+
+    .resume-like {
+      grid-column-start: 1;
+      grid-row-start: row1-end;
+      justify-self: left;
+      .icon {
+        width: 2.5vh;
+        padding: 1.5vh;
+        background-color: $colorLike;
+        &.icon-dislike {
+          background-color: $colorDislike;
+        }
+      }
+    }
   }
 }

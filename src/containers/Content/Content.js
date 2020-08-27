@@ -21,10 +21,7 @@ export class Home extends Component {
     }
   }
 
-
-
   render() {
-
     const { error, loading, people } = this.state;
     let peopleInfo = null;
 
@@ -33,6 +30,7 @@ export class Home extends Component {
         person.total = person.countlikes + person.countdislikes
         person.likes = person.countlikes * 100 / person.total
         person.dislikes = person.countdislikes * 100 / person.total
+        person.mostvote = (person.countlikes >= person.countdislikes) ? 'icon icon-like':'icon icon-dislike';
         return (
           <Card
             key={person.id}
@@ -45,6 +43,7 @@ export class Home extends Component {
             personLikes={person.likes}
             personDislikes={person.dislikes}
             personTotal={person.total}
+            personMostVote={person.mostvote}
           />
         );
       });
