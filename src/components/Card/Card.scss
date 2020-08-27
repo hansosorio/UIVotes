@@ -17,9 +17,14 @@ $colorDislike: #feb432;
   grid-template-rows: [row1-start] 50% [row1-end] 10% [row1-line] 10% [row2-line] 10% [row3-line] 10% [row4-line] 10% [end-line];
   grid-template-columns: [col1] 10% [col2] auto;
 
+  .active {
+    border: 1px solid #ffffff;
+  }
+
   .icon {
     padding: 2vh;
     width: 4vh;
+    z-index: 1;
     &.icon-dislike {
       transform: rotate(180deg);
     }
@@ -71,13 +76,26 @@ $colorDislike: #feb432;
     align-items: center;
     justify-content: flex-start;
 
+
     div {
       margin-right: 2vh;
+
+      @keyframes calltoaction {
+        0%    {-webkit-transform: scale(1);   }
+        25%   {-webkit-transform: scale(1.5); }
+        50%   {-webkit-transform: scale(1);   }
+        75%   {-webkit-transform: scale(1.5); }
+        100%  {-webkit-transform: scale(1);   }
+      }
+      &.bar.animate {
+        animation: calltoaction 4s 2;
+      }
     }
     .icon {
       width: 2vh;
       height: 2vh;
       padding: 1vh;
+      cursor: pointer;
     }
     .btn-vote {
       border: 1px solid white;
@@ -98,6 +116,9 @@ $colorDislike: #feb432;
     display: flex;
     font-size: x-large;
 
+    span {
+      z-index: 1;
+    }
     div {
       display: flex;
       align-items: center;

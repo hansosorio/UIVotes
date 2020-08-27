@@ -12,7 +12,7 @@ export class Home extends Component {
     error: false,
   };
 
-  async componentDidMount() {
+ async componentDidMount() {
     try {
       const people = await fakeAPI.getAllCards();
       this.setState({ people, loading: false, error: false });
@@ -21,15 +21,29 @@ export class Home extends Component {
     }
   }
 
+  actionLikeHandler = ({ idPerson, action }) => {
+    let newpeople = this.state.people.map((item)=>{
+      if (item.id === idPerson) {
+        if (action === 'like')
+          item.countlikes++;
+        if (action === 'dislike' && item.countlikes > 0)
+          item.countlikes--;
+      }
+      return item;
+    })
+    localStorage.setItem('peoplecards', JSON.stringify(newpeople));
+    this.setState({ people: newpeople });
+  }
+
   render() {
     const { error, loading, people } = this.state;
     let peopleInfo = null;
 
     if (!loading && !error && people.length > 0) {
-      peopleInfo = people.map(person => {
+      peopleInfo = this.state.people.map(person => {
         person.total = person.countlikes + person.countdislikes
-        person.likes = person.countlikes * 100 / person.total
-        person.dislikes = person.countdislikes * 100 / person.total
+        person.likes = parseFloat(person.countlikes * 100 / person.total).toFixed(0)
+        person.dislikes = parseFloat(person.countdislikes * 100 / person.total).toFixed(0)
         person.mostvote = (person.countlikes >= person.countdislikes) ? 'icon icon-like':'icon icon-dislike';
         return (
           <Card
@@ -44,6 +58,7 @@ export class Home extends Component {
             personDislikes={person.dislikes}
             personTotal={person.total}
             personMostVote={person.mostvote}
+            actionLike={this.actionLikeHandler}
           />
         );
       });
