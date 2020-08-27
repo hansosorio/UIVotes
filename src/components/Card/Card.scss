@@ -1,0 +1,185 @@
+$colorLike: #2ebdb7;
+$colorDislike: #feb432;
+
+.card-component {
+  margin-bottom: 20px;
+  margin-right: 20px;
+  width: 45%;
+  height: 65vh;
+  border: 1px solid #ffffff;
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3);
+  border-radius: 2px;
+  background: #ffffff;
+  color: white;
+  transition: all 0.15s ease-in-out;
+
+  display: grid;
+  grid-template-rows: [row1-start] 50% [row1-end] 10% [row1-line] 10% [row2-line] 10% [row3-line] 10% [row4-line] 10% [end-line];
+  grid-template-columns: [col1] 10% [col2] auto;
+
+  .active {
+    border: 1px solid #ffffff;
+  }
+
+  .icon {
+    padding: 2vh;
+    width: 4vh;
+    z-index: 1;
+    &.icon-dislike {
+      transform: rotate(180deg);
+    }
+  }
+
+  .resume-like {
+    grid-column-start: 1;
+    grid-row-start: row1-end;
+    justify-self: start;
+    align-self: center;
+    .icon {
+      width: 1.5vh;
+      padding: 1vh;
+      background-color: $colorLike;
+      &.icon-dislike {
+        background-color: $colorDislike;
+      }
+    }
+  }
+  h3 {
+    grid-column-start: 2;
+    grid-row-start: row1-end;
+    justify-self: start;
+    align-self: center;
+    font-size: xx-large;
+    text-align: start;
+  }
+  .station-component {
+    grid-column-start: 2;
+    grid-row-start: row1-line;
+    justify-self: start;
+    align-self: start;
+    font-size: x-small;
+  }
+  .description-component {
+    grid-column-start: 2;
+    grid-row-start: row2-line;
+    justify-self: start;
+    align-self: center;
+    text-align: left;
+    font-size: small;
+  }
+
+  .votescontainer {
+    grid-column-start: 2;
+    grid-row-start: row3-line;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+
+    div {
+      margin-right: 2vh;
+
+      @keyframes calltoaction {
+        0%    {-webkit-transform: scale(1);   }
+        25%   {-webkit-transform: scale(1.5); }
+        50%   {-webkit-transform: scale(1);   }
+        75%   {-webkit-transform: scale(1.5); }
+        100%  {-webkit-transform: scale(1);   }
+      }
+      &.bar.animate {
+        animation: calltoaction 4s 2;
+      }
+    }
+    .icon {
+      width: 2vh;
+      height: 2vh;
+      padding: 1vh;
+      cursor: pointer;
+    }
+    .btn-vote {
+      border: 1px solid white;
+      font-size: small;
+      padding: 1.5vh 3vh 1.5vh 3vh;
+    }
+  }
+
+  .votescounterbar {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: row4-line;
+    justify-self: end;
+    align-self: end;
+    width: 100%;
+    height: 6vh;
+    color: white;
+    display: flex;
+    font-size: x-large;
+
+    span {
+      z-index: 1;
+    }
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      background-color: $colorDislike;
+    }
+    div:first-child {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      background-color: $colorLike;
+    }
+  }
+
+  &:hover {
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.3);
+  }
+
+  &:active {
+    background: #fbfbfb;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3);
+  }
+
+  .main-background {
+    position: relative;
+    width: 100%;
+  }
+
+  .bar-like {
+    background-color: $colorLike;
+  }
+  .bar-dislike {
+    background-color: $colorDislike;
+  }
+}
+
+@media only screen and (max-width: 766px) {
+  .card-component {
+    margin: 10px 0;
+    min-width: 350px;
+    width: calc(100% - 60px);
+  }
+}
+
+@media only screen and (min-width: 767px) and (max-width: 1500px) {
+  .card-component {
+    margin: 10px 0;
+    height: 85vh;
+
+    .resume-like {
+      grid-column-start: 1;
+      grid-row-start: row1-end;
+      justify-self: left;
+      .icon {
+        width: 2.5vh;
+        padding: 1.5vh;
+        background-color: $colorLike;
+        &.icon-dislike {
+          background-color: $colorDislike;
+        }
+      }
+    }
+  }
+}
