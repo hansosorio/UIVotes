@@ -1,5 +1,11 @@
 # UIVotes
-UI Web app to voting
+UI Web app to voting. ReactJs APP, Mobile First, FakeAPI, LocalStorage, Animations CSS, Pages Navigations.
+
+Branch B001
+Develop a layout, containers and components. This app use a fakeAPI to get data, also adding other pages, and fix some mobile issues with styles
+Branch B002
+Develop interactive votation, also it has animation when click on vote and no option is selected. Use localStorage to persist the init data
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
