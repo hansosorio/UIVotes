@@ -13,6 +13,9 @@ $colorDislike: #feb432;
   color: white;
   transition: all 0.15s ease-in-out;
 
+  background-size: cover;
+  background-position: center;
+
   display: grid;
   grid-template-rows: [row1-start] 50% [row1-end] 10% [row1-line] 10% [row2-line] 10% [row3-line] 10% [row4-line] 10% [end-line];
   grid-template-columns: [col1] 10% [col2] auto;
